@@ -9,6 +9,12 @@
 
 echo "Starting Script"
 
+#Set working directory
+wd="~"
+
+#Move to working directory
+cd $wd
+
 #Get directories from user
 #Read in first directory
 read  -p "Enter directory to move files FROM: " dir1
