@@ -29,7 +29,7 @@ sort list.txt | uniq -d | less >> uniquelist.txt
 cd $dir1
 
 #Read the sorted list and move the appropriate files from dir1 to dir2
-file="/home/morgan/uniquelist.txt"
+file="~/uniquelist.txt"
 while read line;
 	do
 	echo "Moving ${line} from $dir1 to $dir2"
@@ -38,6 +38,6 @@ while read line;
 	done < "${file}"
 
 #move back home
-cd /home/morgan/
+cd ~
 #Cleanup
 rm list.txt uniquelist.txt
