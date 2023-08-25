@@ -9,11 +9,8 @@
 
 echo "Starting Script"
 
-#Set working directory
-wd="~"
-
 #Move to working directory
-cd $wd
+cd ~
 
 #Get directories from user
 #Read in first directory
