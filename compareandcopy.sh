@@ -9,9 +9,6 @@
 
 echo "Starting Script"
 
-#Move to working directory
-cd ~
-
 #Get directories from user
 #Read in first directory
 read  -p "Enter directory to move files FROM: " dir1
@@ -22,21 +19,22 @@ read  -p "Enter directory to move files TO: " dir2
 #The command sed 's/....$//' removes the file extension (last 4 characters in file name)
 echo "Parsing $dir1"
 ls -1 $dir1 | sed 's/....$//' >> list.txt
+sleep 01
 echo "Parsing $dir2"
 ls -1 $dir2 | sed 's/....$//' >> list.txt
+sleep 01
 
 #Read the generated list and find the duplicate names, output ONLY the duplicate names to the uniquelist.txt file
+echo "Finding matches and extracting into a list"
 sort list.txt | uniq -d | less >> uniquelist.txt
-
-#Move to dir1
-cd $dir1
+sleep 03
 
 #Read the sorted list and move the appropriate files from dir1 to dir2
-file="~/uniquelist.txt"
+file=uniquelist.txt
 while read line;
 	do
 	echo "Moving ${line} from $dir1 to $dir2"
-	mv "${line}.png" "$dir2${line}.png"
+	mv "$dir1${line}.png" "$dir2${line}.png"
 	sleep .02
 	done < "${file}"
 
